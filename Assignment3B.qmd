@@ -1,0 +1,14 @@
+---
+title: "Assignment3B"
+author: "Cecilia De La Fuente Chavez"
+format: html
+execute:
+  echo: true
+editor: visual
+---
+
+## Approach Deliverable
+
+### Overview
+
+For Assignment 3B, I will use the [U.S. Energy Information Administration's](https://www.eia.gov/renewable/data.php) *Total energy consumption of renewable and nonrenewable energy sources* data set that I used for Assignment 1. Because this data set does not have have daily points, only yearly and monthly data, I will calculate the year-to-date average and the six-month moving averages, instead of six-day, for two items, Solar and Wind energy consumption. I will use window functions in dplyr, because I prefer working in R.

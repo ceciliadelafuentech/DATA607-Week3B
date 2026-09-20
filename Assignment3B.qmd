@@ -38,7 +38,7 @@ glimpse(df_raw)
 
 ### Cleaning and transformation process
 
-I used row indexing to remove the first row after headers which was unnecessary for this analysis, and saved the updated dataframe to a new one called df_clean.
+I used row indexing to remove the first row after headers which was unnecessary for this analysis, and saved the updated data frame to a new one called df.
 
 ```{r}
 df <- df_raw[-1,] 
@@ -76,7 +76,7 @@ df_long <- df_long %>%
 glimpse(df_long)
 ```
 
-This code chunk arranges the data by energy source type and date, then groups it by year to calculate the cumulative average and store those values in a new column ytd_average. After I used ungroup() to return the data frame to its normal structure.
+This code chunk arranges the data by energy source type and date, then groups it by year to calculate the cumulative average and store those values in a new column ytd_average. After, I used ungroup() to return the data frame to its normal structure.
 
 ```{r}
 df_long <- df_long %>%
@@ -96,7 +96,7 @@ df_long %>%
   select(Date, Source, Consumption, ytd_average)
 ```
 
-This code chunk arranges the data by energy source type and date, then groups it by Source to calculate the average for each six-month window, and store those values in a new column six_month_moving_average. After I used ungroup() to return the data frame to its normal structure.
+This code chunk arranges the data by energy source type and date, then groups it by Source to calculate the average for each six-month window, and store those values in a new column six_month_moving_average. After, I used ungroup() to return the data frame to its normal structure.
 
 ```{r}
 df_long <- df_long %>%
@@ -123,7 +123,7 @@ df_long %>%
 
 ### Visualizations
 
-Solar Plot - create a subset of the dataframe to make the a plot with Solar data from 2020 to 2026
+Solar Plot - create a subset of the data frame to make the a plot with Solar data from 2020 to 2026
 
 ```{r}
 solar_plot <- df_long %>%
@@ -148,7 +148,7 @@ ggplot(solar_plot, aes(x = Date)) +
   )
 ```
 
-Wind Plot - create a subset of the dataframe to make the a plot with Wind data from 2020 to 2026
+Wind Plot - create a subset of the data frame to make the a plot with Wind data from 2020 to 2026
 
 ```{r}
 wind_plot <- df_long %>%   
@@ -172,3 +172,7 @@ ggplot(wind_plot, aes(x = Date)) +
     y = "Consumption (Quadrillion Btu)"
   )
 ```
+
+### Conclusion
+
+The window functions help identify yearly and six-month trends in solar and wind energy consumption. Monthly fluctuations can be observed, and an overall upwards trend from 2020 until 2026.

@@ -168,7 +168,7 @@ $ `Total Primary Energy Consumption`                               &lt;chr&gt; "
 </section>
 <section id="cleaning-and-transformation-process" class="level3">
 <h3 class="anchored" data-anchor-id="cleaning-and-transformation-process">Cleaning and transformation process</h3>
-<p>I used row indexing to remove the first row after headers which was unnecessary for this analysis, and saved the updated dataframe to a new one called df_clean.</p>
+<p>I used row indexing to remove the first row after headers which was unnecessary for this analysis, and saved the updated data frame to a new one called df.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_raw[<span class="sc">-</span><span class="dv">1</span>,] </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -253,7 +253,7 @@ $ Source      &lt;chr&gt; "Solar Energy Consumption", "Wind Energy Consumption",
 $ Consumption &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
 </div>
-<p>This code chunk arranges the data by energy source type and date, then groups it by year to calculate the cumulative average and store those values in a new column ytd_average. After I used ungroup() to return the data frame to its normal structure.</p>
+<p>This code chunk arranges the data by energy source type and date, then groups it by year to calculate the cumulative average and store those values in a new column ytd_average. After, I used ungroup() to return the data frame to its normal structure.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Source, Date) <span class="sc">%&gt;%</span></span>
@@ -286,7 +286,7 @@ $ Consumption &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 12 2025-12-01 Solar Energy Consumption      0.0782      0.120 </code></pre>
 </div>
 </div>
-<p>This code chunk arranges the data by energy source type and date, then groups it by Source to calculate the average for each six-month window, and store those values in a new column six_month_moving_average. After I used ungroup() to return the data frame to its normal structure.</p>
+<p>This code chunk arranges the data by energy source type and date, then groups it by Source to calculate the average for each six-month window, and store those values in a new column six_month_moving_average. After, I used ungroup() to return the data frame to its normal structure.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Source, Date) <span class="sc">%&gt;%</span></span>
@@ -327,7 +327,7 @@ $ Consumption &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </section>
 <section id="visualizations" class="level3">
 <h3 class="anchored" data-anchor-id="visualizations">Visualizations</h3>
-<p>Solar Plot - create a subset of the dataframe to make the a plot with Solar data from 2020 to 2026</p>
+<p>Solar Plot - create a subset of the data frame to make the a plot with Solar data from 2020 to 2026</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>solar_plot <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
@@ -355,7 +355,7 @@ $ Consumption &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 </div>
-<p>Wind Plot - create a subset of the dataframe to make the a plot with Wind data from 2020 to 2026</p>
+<p>Wind Plot - create a subset of the data frame to make the a plot with Wind data from 2020 to 2026</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>wind_plot <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span>   </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(     </span>
@@ -383,6 +383,10 @@ $ Consumption &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 </div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>The window functions help identify yearly and six-month trends in solar and wind energy consumption. Monthly fluctuations can be observed, and an overall upwards trend from 2020 until 2026.</p>
 </section>
 </section>
 
